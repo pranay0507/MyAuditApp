@@ -47,8 +47,9 @@
               id="income" 
               name="income" 
               placeholder="Enter the Income"
-              required #income="ngModel">
+              required #income="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
             </div>
+            <div class="alert alert-danger" *ngIf="income.invalid && (income.dirty || income.touched)">Please enter valid number</div>
             <div [hidden]="!income.pristine" class="alert alert-danger">Income is required</div>
           
           <div class="form-group">
@@ -57,32 +58,36 @@
               class="form-control" 
               id="credittotal" 
               name="credittotal" 
-              placeholder="Enter the CreditBills">
+              placeholder="Enter the CreditBills" #creditbills="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
           </div>
+          <div class="alert alert-danger" *ngIf="creditbills.invalid && (creditbills.dirty || creditbills.touched)">Please enter valid number</div>
           <div class="form-group">
             <label for="bills">Bills</label>
             <input type="text" [(ngModel)]="audit.bills" 
               class="form-control" 
               id="bills" 
               name="bills" 
-              placeholder="Enter the Bills">
+              placeholder="Enter the Bills" #bills="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
           </div>
+          <div class="alert alert-danger" *ngIf="bills.invalid && (bills.dirty || bills.touched)">Please enter valid number</div>
           <div class="form-group">
             <label for="insurance">Insurance</label>
             <input type="text" [(ngModel)]="audit.insurance" 
               class="form-control" 
               id="insurance" 
               name="insurance" 
-              placeholder="Enter the Insurance">
+              placeholder="Enter the Insurance" #insurance="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
           </div>
+          <div class="alert alert-danger" *ngIf="insurance.invalid && (insurance.dirty || insurance.touched)">Please enter valid number</div>
           <div class="form-group">
             <label for="expenses">Expenses</label>
             <input type="text" [(ngModel)]="audit.expenses" 
               class="form-control" 
               id="expenses" 
               name="expenses" 
-              placeholder="Enter the Expenses">
+              placeholder="Enter the Expenses" #expenses="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
           </div>
+          <div class="alert alert-danger" *ngIf="expenses.invalid && (expenses.dirty || expenses.touched)">Please enter valid number</div>
           <div class="row">
          <div class="offset-md-4 col-md-2">
         <button type="submit" [disabled]="!auditForm.form.valid" 
