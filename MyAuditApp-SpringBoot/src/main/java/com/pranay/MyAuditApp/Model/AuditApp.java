@@ -11,11 +11,11 @@ public class AuditApp{
     @EmbeddedId
     private CompositeKey compositeKey;
 
-    private int income;
-    private int creditbills;
-    private int bills;
-    private int insurance;
-    private int expenses;
-    private int balance;
+    private double income;
+    private double creditbills;
+    private double bills;
+    private double insurance;
+    private double expenses;
+    private double balance;
     private Date createtimestamp;
 }

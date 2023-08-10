@@ -9,7 +9,9 @@
       "@app/auditlistcomponent": ["src/app/auditlist/auditlist.component.ts"],
       "@app/compositekey":["src/app/compositekey.ts"],
       "@app/getauditcomponent":["src/app/getauditlist/getauditcomponent.ts"],
-      "@app/alphabetValidator":["src/app/Alphabetvalidatordirective.ts"]
+      "@app/alphabetValidator":["src/app/Alphabetvalidatordirective.ts"],
+      "@app/saveconfirm":["src/app/saveconfirm.component.ts"],
+      "@app/loginform":["src/app/loginform.ts"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

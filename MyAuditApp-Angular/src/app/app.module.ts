@@ -8,6 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddauditComponent } from './addaudit/addaudit.component';
 import {Alphabetvalidatordirective} from './alphabetvalidatordirective';
+import { SaveconfirmComponent } from './saveconfirm/saveconfirm.component';
+import { UserregistrationComponent } from './userregistration/userregistration.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { AppshellComponent } from './appshell/appshell.component';
 
 
 @NgModule({
@@ -16,7 +20,11 @@ import {Alphabetvalidatordirective} from './alphabetvalidatordirective';
     AppComponent,
     AuditlistComponent,
     AddauditComponent,
-    Alphabetvalidatordirective
+    Alphabetvalidatordirective,
+    SaveconfirmComponent,
+    UserregistrationComponent,
+    UserloginComponent,
+    AppshellComponent
   ],
   imports: [
     BrowserModule,

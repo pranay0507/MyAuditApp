@@ -11,6 +11,7 @@ import { AuditService } from '@app/auditservice';
 })
 export class GetauditlistComponent implements OnInit{
     myForm!: FormGroup;
+    title!:string;
     audit!: AuditApp[];
     years: number[] = [];
     months:string[] = [
@@ -26,6 +27,7 @@ export class GetauditlistComponent implements OnInit{
           audityear:0,
           auditmonth:'',
         });
+        this.title = 'MyAuditApp'
       };
 
     onSubmit(){
@@ -35,7 +37,7 @@ export class GetauditlistComponent implements OnInit{
         this.auditService.getAuditListForYearAndMonth(audityear,auditmonth).subscribe(
           (data)=>{
             this.auditService.audit = data;
-            this.router.navigate(['/viewaudit']);
+            this.router.navigate(['myauditapp/home/viewaudit']);
           },(error) => {
             console.error('Error fetching data from Spring Boot:', error);
           }
@@ -44,7 +46,7 @@ export class GetauditlistComponent implements OnInit{
         this.auditService.getAuditListByYear(audityear).subscribe(
           (data)=>{
             this.auditService.audit = data;
-            this.router.navigate(['/viewaudit']);
+            this.router.navigate(['myauditapp/home/viewaudit']);
           },(error) => {
             console.error('Error fetching data from Spring Boot:', error);
           }

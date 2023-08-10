@@ -1,103 +1,85 @@
-<div class="card my-5" ng-app="addAudit" ng-controller="myCtrl">
-    <div class="card-body">
-      <form (ngSubmit)="onSubmit()" #auditForm="ngForm">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" [(ngModel)]="audit.compositeKey.createby" 
-              class="form-control" 
-              id="createby" 
-              name="createby" 
-              placeholder="Enter the Name"
-              required #createby="ngModel"
-              alphabetValidator>
+<app-appshell></app-appshell>
+<div class="container">
+  <div class="row">
+    <div class="offset-sm-2 col-sm-8">
+      <div class="card my-5" ng-app="addAudit" ng-controller="myCtrl">
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()" #auditForm="ngForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" [(ngModel)]="audit.compositeKey.createby" class="form-control" id="createby"
+                name="createby" placeholder="Enter the Name" required #createby="ngModel" alphabetValidator>
             </div>
-            <div class="alert alert-danger" *ngIf="createby.errors!==null && createby.errors['alphabet']">Only alphabetic characters are allowed.</div>
+            <div class="alert alert-danger" *ngIf="createby.errors!==null && createby.errors['alphabet']">Only
+              alphabetic characters are allowed.</div>
             <div [hidden]="!createby.pristine" class="alert alert-danger">Name is required</div>
-        <div class="form-group">
-          <label for="audityear">AuditYear</label>
-          <select [(ngModel)]="audit.compositeKey.audityear" 
-            class="form-control" 
-            id="audityear" 
-            name="audityear" 
-            placeholder="Enter the Year"
-            required #audityear="ngModel" 
-            ng-options="x for x in audityear">
-            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-        </select>
-        </div>
-        <div [hidden]="!audityear.pristine" class="alert alert-danger">Year is required</div>
-        <div class="form-group">
-          <label for="auditmonth">AuditMonth</label>
-          <select [(ngModel)]="audit.compositeKey.auditmonth" 
-            class="form-control" 
-            id="auditmonth" 
-            name="auditmonth" 
-            placeholder="Enter the Month"
-            required #auditmonth="ngModel"
-            ng-options="x for x in auditmonth">
-            <option *ngFor="let month of months" [value]="month">{{ month }}</option>
-        </select>
-        </div>
-          <div [hidden]="!auditmonth.pristine" class="alert alert-danger">Month is required</div>
-        
-        <div class="form-group">
-            <label for="income">Income</label>
-            <input type="text" [(ngModel)]="audit.income" 
-              class="form-control" 
-              id="income" 
-              name="income" 
-              placeholder="Enter the Income"
-              required #income="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
+            <div class="form-group">
+              <label for="audityear">AuditYear</label>
+              <select [(ngModel)]="audit.compositeKey.audityear" class="form-control" id="audityear" name="audityear"
+                placeholder="Enter the Year" required #audityear="ngModel" ng-options="x for x in audityear">
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+              </select>
             </div>
-            <div class="alert alert-danger" *ngIf="income.invalid && (income.dirty || income.touched)">Please enter valid number</div>
+            <div [hidden]="!audityear.pristine" class="alert alert-danger">Year is required</div>
+            <div class="form-group">
+              <label for="auditmonth">AuditMonth</label>
+              <select [(ngModel)]="audit.compositeKey.auditmonth" class="form-control" id="auditmonth" name="auditmonth"
+                placeholder="Enter the Month" required #auditmonth="ngModel" ng-options="x for x in auditmonth">
+                <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+              </select>
+            </div>
+            <div [hidden]="!auditmonth.pristine" class="alert alert-danger">Month is required</div>
+
+            <div class="form-group">
+              <label for="income">Income</label>
+              <input type="text" [(ngModel)]="audit.income" class="form-control" id="income" name="income"
+                placeholder="Enter the Income" required #income="ngModel" pattern="^[1-9]\d*(\.\d{1,2})?$">
+            </div>
+            <div class="alert alert-danger" *ngIf="income.invalid && (income.dirty || income.touched)">Please enter
+              valid number with 2 decimal places</div>
             <div [hidden]="!income.pristine" class="alert alert-danger">Income is required</div>
-          
-          <div class="form-group">
-            <label for="creditbills">CreditBills</label>
-            <input type="text" [(ngModel)]="audit.creditbills" 
-              class="form-control" 
-              id="credittotal" 
-              name="credittotal" 
-              placeholder="Enter the CreditBills" #creditbills="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
-          </div>
-          <div class="alert alert-danger" *ngIf="creditbills.invalid && (creditbills.dirty || creditbills.touched)">Please enter valid number</div>
-          <div class="form-group">
-            <label for="bills">Bills</label>
-            <input type="text" [(ngModel)]="audit.bills" 
-              class="form-control" 
-              id="bills" 
-              name="bills" 
-              placeholder="Enter the Bills" #bills="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
-          </div>
-          <div class="alert alert-danger" *ngIf="bills.invalid && (bills.dirty || bills.touched)">Please enter valid number</div>
-          <div class="form-group">
-            <label for="insurance">Insurance</label>
-            <input type="text" [(ngModel)]="audit.insurance" 
-              class="form-control" 
-              id="insurance" 
-              name="insurance" 
-              placeholder="Enter the Insurance" #insurance="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
-          </div>
-          <div class="alert alert-danger" *ngIf="insurance.invalid && (insurance.dirty || insurance.touched)">Please enter valid number</div>
-          <div class="form-group">
-            <label for="expenses">Expenses</label>
-            <input type="text" [(ngModel)]="audit.expenses" 
-              class="form-control" 
-              id="expenses" 
-              name="expenses" 
-              placeholder="Enter the Expenses" #expenses="ngModel" pattern="^[1-9]\d*(\.\d+)?$">
-          </div>
-          <div class="alert alert-danger" *ngIf="expenses.invalid && (expenses.dirty || expenses.touched)">Please enter valid number</div>
-          <div class="row">
-         <div class="offset-md-4 col-md-2">
-        <button type="submit" [disabled]="!auditForm.form.valid" 
-          class="btn btn-info">Submit</button>
+
+            <div class="form-group">
+              <label for="creditbills">CreditBills</label>
+              <input type="text" [(ngModel)]="audit.creditbills" class="form-control" id="credittotal"
+                name="credittotal" placeholder="Enter the CreditBills" #creditbills="ngModel"
+                pattern="^[1-9]\d*(\.\d{1,2})?$">
+            </div>
+            <div class="alert alert-danger" *ngIf="creditbills.invalid && (creditbills.dirty || creditbills.touched)">
+              Please enter valid number with 2 decimal places</div>
+            <div class="form-group">
+              <label for="bills">Bills</label>
+              <input type="text" [(ngModel)]="audit.bills" class="form-control" id="bills" name="bills"
+                placeholder="Enter the Bills" #bills="ngModel" pattern="^[1-9]\d*(\.\d{1,2})?$">
+            </div>
+            <div class="alert alert-danger" *ngIf="bills.invalid && (bills.dirty || bills.touched)">Please enter valid
+              number with 2 decimal places</div>
+            <div class="form-group">
+              <label for="insurance">Insurance</label>
+              <input type="text" [(ngModel)]="audit.insurance" class="form-control" id="insurance" name="insurance"
+                placeholder="Enter the Insurance" #insurance="ngModel" pattern="^[1-9]\d*(\.\d{1,2})?$">
+            </div>
+            <div class="alert alert-danger" *ngIf="insurance.invalid && (insurance.dirty || insurance.touched)">Please
+              enter valid number with 2 decimal places</div>
+            <div class="form-group">
+              <label for="expenses">Expenses</label>
+              <input type="text" [(ngModel)]="audit.expenses" class="form-control" id="expenses" name="expenses"
+                placeholder="Enter the Expenses" #expenses="ngModel" pattern="^[1-9]\d*(\.\d{1,2})?$">
+            </div>
+            <div class="alert alert-danger" *ngIf="expenses.invalid && (expenses.dirty || expenses.touched)">Please
+              enter valid number with 2 decimal places</div>
+            <div class="row">
+              <div class="offset-sm-3 col-sm-2">
+                <button type="submit" [disabled]="!auditForm.form.valid" class="btn btn-info">Submit</button>
+              </div>
+              <div class="offset-sm-2 col-sm-2">
+                <button (click)="refreshPage()" [disabled]="!auditForm.form.touched"
+                  class="btn btn-info">Refresh</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="offset-md-1 col-md-2">
-        <button (click)="refreshPage()" [disabled]="!auditForm.form.touched"
-          class="btn btn-info">Refresh</button>
-        </div>
-    </div>
-      </form>
+      </div>
     </div>
   </div>
+</div>

@@ -15,6 +15,7 @@ export class AddauditComponent implements OnInit{
       'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
       'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
     ];
+    
 
     constructor(private auditservice: AuditService,
       private route: ActivatedRoute,
@@ -23,12 +24,20 @@ export class AddauditComponent implements OnInit{
       }
 
       onSubmit() {
-        this.auditservice.save(this.audit).subscribe(result => this.gotoUserList());
+        this.auditservice.save(this.audit).subscribe((response) => {
+          console.error('Form submission was successfull:', response);
+          this.gotoConfirm();
+        },
+        (error) => {
+          console.error('Form submission failed:', error);
+          alert('Form submission failed. Please try again later.');
+        });
+      }
+
+      gotoConfirm() {
+        this.router.navigate(['myauditapp/home/saveaudit']);
       }
     
-      gotoUserList() {
-        this.router.navigate(['/addaudit']);
-      }
 
       ngOnInit() {
         const currentYear = new Date().getFullYear();
