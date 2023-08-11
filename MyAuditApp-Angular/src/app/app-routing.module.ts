@@ -9,6 +9,8 @@ import { SaveconfirmComponent } from './saveconfirm/saveconfirm.component';
 import { UserregistrationComponent } from './userregistration/userregistration.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { AppshellComponent } from './appshell/appshell.component';
+import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
+
 
 const routes: Routes = [
   {path:'myauditapp/home/getaudit',component:GetauditlistComponent},
@@ -17,7 +19,8 @@ const routes: Routes = [
   {path:'myauditapp/home/saveaudit',component:SaveconfirmComponent},
   {path:'myauditapp/register',component:UserregistrationComponent},
   {path:'myauditapp/login',component:UserloginComponent},
-  {path:'myauditapp/home',component:AppshellComponent}
+  {path:'myauditapp/home',component:AppshellComponent},
+  {path:'myauditapp/register/success',component:RegistersuccessComponent}
 ];
 
 @NgModule({

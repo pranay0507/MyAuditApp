@@ -20,7 +20,7 @@ export class UserregistrationComponent {
     onSubmit() {
       this.auditservice.saveUser(this.userDetails).subscribe((response) => {
         console.error('Form submission was successfull:', response);
-        this.goToLogin();
+        this.successRegister();
       },
       (error) => {
         console.error('Form submission failed:', error);
@@ -28,11 +28,7 @@ export class UserregistrationComponent {
       });
     }
 
-    goToLogin(){
-      this.router.navigate(['myauditapp/login']);
-    }
-
-    refreshPage(){
-      window.location.reload();
+    successRegister(){
+      this.router.navigate(['myauditapp/register/success']);
     }
 }

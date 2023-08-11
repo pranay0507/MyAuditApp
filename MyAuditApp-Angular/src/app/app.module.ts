@@ -12,6 +12,7 @@ import { SaveconfirmComponent } from './saveconfirm/saveconfirm.component';
 import { UserregistrationComponent } from './userregistration/userregistration.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { AppshellComponent } from './appshell/appshell.component';
+import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AppshellComponent } from './appshell/appshell.component';
     SaveconfirmComponent,
     UserregistrationComponent,
     UserloginComponent,
-    AppshellComponent
+    AppshellComponent,
+    RegistersuccessComponent,
   ],
   imports: [
     BrowserModule,

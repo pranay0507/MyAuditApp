@@ -11,6 +11,7 @@ import { AuditService } from '@app/auditservice';
 })
 export class GetauditlistComponent implements OnInit{
     myForm!: FormGroup;
+    greet !: string;
     title!:string;
     audit!: AuditApp[];
     years: number[] = [];
@@ -65,6 +66,16 @@ export class GetauditlistComponent implements OnInit{
         audityear: [null, Validators.required],
         auditmonth:[]
       });
+
+      const currentHour = new Date().getHours();
+
+     if(currentHour<12){
+          this.greet = 'Good Morning';
+     }else if(currentHour==12 && currentHour<16){
+          this.greet = 'Good Afternoon';
+     }else{
+          this.greet = 'Good Evening';
+     }
     }
 
 
