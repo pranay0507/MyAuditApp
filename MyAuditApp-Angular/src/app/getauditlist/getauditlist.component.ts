@@ -19,6 +19,7 @@ export class GetauditlistComponent implements OnInit{
       'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
       'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
     ];
+    name!:string;
    
 
     constructor(private formBuilder: FormBuilder,
@@ -34,8 +35,9 @@ export class GetauditlistComponent implements OnInit{
     onSubmit(){
       const audityear = this.myForm.get('audityear')?.value;
       const auditmonth = this.myForm.get('auditmonth')?.value;
+      const firstname = this.name;
       if(auditmonth !== null){
-        this.auditService.getAuditListForYearAndMonth(audityear,auditmonth).subscribe(
+        this.auditService.getAuditListForYearAndMonth(audityear,auditmonth,firstname).subscribe(
           (data)=>{
             this.auditService.audit = data;
             this.router.navigate(['myauditapp/home/viewaudit']);
@@ -44,7 +46,7 @@ export class GetauditlistComponent implements OnInit{
           }
        )
       }else{
-        this.auditService.getAuditListByYear(audityear).subscribe(
+        this.auditService.getAuditListByYear(audityear,firstname).subscribe(
           (data)=>{
             this.auditService.audit = data;
             this.router.navigate(['myauditapp/home/viewaudit']);
@@ -57,6 +59,16 @@ export class GetauditlistComponent implements OnInit{
 
 
     ngOnInit(){
+      const user = localStorage.getItem('currentUser');
+   
+    if(user!=null){
+     const myObject = JSON.parse(user);
+     const firstname = myObject.firstname;
+     if(firstname!=null){
+          this.name = firstname;
+     }
+
+    }
       const currentYear = new Date().getFullYear();
       const startYear = 1990;
       for (let year = currentYear; year >= startYear; year--) {
@@ -78,6 +90,10 @@ export class GetauditlistComponent implements OnInit{
      }
     }
 
+    logout(){
+      localStorage.removeItem('currentUser');
+      this.router.navigate(['myauditapp/login']);
+  }
 
 
 }

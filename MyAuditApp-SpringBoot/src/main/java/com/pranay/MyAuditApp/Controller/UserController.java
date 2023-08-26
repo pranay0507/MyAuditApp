@@ -4,9 +4,9 @@ import com.pranay.MyAuditApp.Form.LoginForm;
 import com.pranay.MyAuditApp.Form.LoginMessage;
 import com.pranay.MyAuditApp.Model.UserDetails;
 import com.pranay.MyAuditApp.Service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,8 +19,8 @@ public class UserController {
 
     @PostMapping("login")
     public ResponseEntity<?> loginUser(@RequestBody LoginForm loginForm){
-        LoginMessage loginReponse = userservice.loginUser(loginForm);
-        return ResponseEntity.ok(loginReponse);
+           LoginMessage loginReponse = userservice.loginUser(loginForm);
+           return ResponseEntity.ok(loginReponse);
     }
 
 

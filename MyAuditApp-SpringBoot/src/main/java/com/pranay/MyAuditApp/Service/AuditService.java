@@ -11,10 +11,10 @@ import java.util.List;
 
 public interface AuditService {
 
-    List<AuditApp> getAuditListForYearAndMonth(int year,String month);
+    List<AuditApp> getAuditListForYearAndMonth(int year,String month,String name);
 
 
     public void saveAudit(AuditApp audit);
 
-    List<AuditApp> getAuditListByYear(int year);
+    List<AuditApp> getAuditListByYear(int year,String name);
 }

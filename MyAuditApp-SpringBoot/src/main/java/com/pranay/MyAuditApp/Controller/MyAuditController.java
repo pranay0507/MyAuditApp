@@ -17,14 +17,16 @@ public class MyAuditController {
     @Autowired
     AuditService auditService;
     @GetMapping("getaudityearmonth")
-    public List<AuditApp> getAuditListForYearAndMonth(@RequestParam("audityear") String year,@RequestParam("auditmonth") String month){
+    public List<AuditApp> getAuditListForYearAndMonth(@RequestParam("audityear") String year,@RequestParam("auditmonth") String month
+            ,@RequestParam("name") String name){
         int audityear = Integer.parseInt(year);
-        return auditService.getAuditListForYearAndMonth(audityear,month);
+        List<AuditApp> list  = auditService.getAuditListForYearAndMonth(audityear,month,name);
+        return list;
     }
     @GetMapping("getaudityear")
-    public List<AuditApp> getAuditListByYear(@RequestParam("audityear") String year){
+    public List<AuditApp> getAuditListByYear(@RequestParam("audityear") String year,@RequestParam("name") String name){
         int audityear = Integer.parseInt(year);
-        return auditService.getAuditListByYear(audityear);
+        return auditService.getAuditListByYear(audityear,name);
     }
     @PostMapping("addaudit")
     public void saveAudit(@RequestBody AuditApp audit){

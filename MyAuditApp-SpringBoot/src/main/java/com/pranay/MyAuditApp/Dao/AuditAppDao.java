@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface AuditAppDao extends JpaRepository<AuditApp, CompositeKey> {
-    @Query(value = "SELECT a FROM AuditApp a WHERE a.compositeKey.audityear= :audityear AND a.compositeKey.auditmonth= :auditmonth")
-    List<AuditApp> findAuditbyYearAndMonth(@Param("audityear") int audityear,@Param("auditmonth") String auditmonth);
-    @Query(value = "SELECT a FROM AuditApp a WHERE a.compositeKey.audityear= :audityear")
-    List<AuditApp> findAuditListByYear(@Param("audityear") int year);
+    @Query(value = "SELECT a FROM AuditApp a WHERE a.compositeKey.audityear= :audityear AND a.compositeKey.auditmonth= :auditmonth AND a.compositeKey.createby= :name")
+    List<AuditApp> findAuditbyYearAndMonth(@Param("audityear") int audityear,@Param("auditmonth") String auditmonth,@Param("name") String name);
+    @Query(value = "SELECT a FROM AuditApp a WHERE a.compositeKey.audityear= :audityear AND a.compositeKey.createby= :name")
+    List<AuditApp> findAuditListByYear(@Param("audityear") int year,@Param("name") String name);
 }

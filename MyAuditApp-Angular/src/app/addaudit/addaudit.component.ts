@@ -24,6 +24,14 @@ export class AddauditComponent implements OnInit{
       }
 
       onSubmit() {
+        const user = localStorage.getItem('currentUser');
+        if(user!=null){
+          const myObject = JSON.parse(user);
+          const firstname = myObject.firstname;
+          if(firstname!=null){
+            this.audit.compositeKey.createby = firstname;
+          } 
+        }
         this.auditservice.save(this.audit).subscribe((response) => {
           console.error('Form submission was successfull:', response);
           this.gotoConfirm();

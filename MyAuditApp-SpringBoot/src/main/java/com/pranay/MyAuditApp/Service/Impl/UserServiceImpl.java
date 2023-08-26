@@ -48,15 +48,15 @@ public class UserServiceImpl implements UserService {
             if(isPasswordCorrect){
                 Optional<UserDetails> userExists = userDetailsDTO.findUserByEmailAndPassword(loginForm.getEmailaddr().toUpperCase(),encodedPassword);
                 if(userExists.isPresent()){
-                    return new LoginMessage("Login Success",true);
+                    return new LoginMessage("Login Success",true,user.getFirstname());
                 }else {
-                    return new LoginMessage("Login Failed", false);
+                    return new LoginMessage("Login Failed", false,null);
                 }
             }else {
-                return new LoginMessage("Password does not Match", false);
+                return new LoginMessage("Password does not Match", false,null);
             }
         }else {
-            return new LoginMessage("Email not exits", false);
+            return new LoginMessage("Email not exits", false,null);
         }
     }
 

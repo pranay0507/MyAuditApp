@@ -5,6 +5,16 @@ public class LoginMessage {
     String message;
     boolean status;
 
+    String firstname;
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
     public String getMessage() {
         return message;
     }
@@ -21,8 +31,10 @@ public class LoginMessage {
         this.status = status;
     }
 
-    public LoginMessage(String message, boolean status) {
+    public LoginMessage(String message, boolean status, String firstname) {
         this.message = message;
         this.status = status;
+        this.firstname = firstname;
+
     }
 }

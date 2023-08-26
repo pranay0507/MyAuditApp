@@ -14,8 +14,8 @@ public class AuditServiceImpl implements AuditService {
     AuditAppDao auditAppDao;
 
     @Override
-    public List<AuditApp> getAuditListForYearAndMonth(int year,String month) {
-        return auditAppDao.findAuditbyYearAndMonth(year,month);
+    public List<AuditApp> getAuditListForYearAndMonth(int year,String month,String name) {
+        return auditAppDao.findAuditbyYearAndMonth(year,month,name);
     }
 
     @Override
@@ -24,8 +24,8 @@ public class AuditServiceImpl implements AuditService {
     }
 
     @Override
-    public List<AuditApp> getAuditListByYear(int year) {
-        return auditAppDao.findAuditListByYear(year);
+    public List<AuditApp> getAuditListByYear(int year,String name) {
+        return auditAppDao.findAuditListByYear(year,name);
     }
 
 }

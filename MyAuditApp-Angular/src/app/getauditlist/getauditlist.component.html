@@ -12,7 +12,7 @@
            </a> 
            </li>  
            <li class="nav-item"> 
-            <a class="nav-link" href="myauditapp/login"><i class="fas fa-sign-out-alt"></i> Logout</a> 
+            <a class="nav-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a> 
             </li>
         </ul> 
      </div> 
@@ -24,7 +24,7 @@
     <div class="col-sm-12">
       <div class="card bg-dark my-5">
         <div class="card-body">
-          <h2 class="card-title text-center text-white py-3">{{greet}} Pranay</h2>
+          <h2 class="card-title text-center text-white py-3">{{greet}} {{name}}!</h2>
           <ul class="text-center list-inline py-3">
             <li class="list-inline-item">
               <a routerLink="/myauditapp/home/getaudit" class="btn btn-info">View Audit</a>

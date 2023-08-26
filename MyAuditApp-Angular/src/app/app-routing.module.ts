@@ -10,16 +10,17 @@ import { UserregistrationComponent } from './userregistration/userregistration.c
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { AppshellComponent } from './appshell/appshell.component';
 import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
+import { Authguard } from './authguard';
 
 
 const routes: Routes = [
-  {path:'myauditapp/home/getaudit',component:GetauditlistComponent},
-  { path:'myauditapp/home/addaudit', component: AddauditComponent },
-  {path:'myauditapp/home/viewaudit',component:AuditlistComponent},
-  {path:'myauditapp/home/saveaudit',component:SaveconfirmComponent},
+  {path:'myauditapp/home/getaudit',component:GetauditlistComponent,canActivate: [Authguard]},
+  {path:'myauditapp/home/addaudit', component: AddauditComponent ,canActivate: [Authguard]},
+  {path:'myauditapp/home/viewaudit',component:AuditlistComponent,canActivate: [Authguard]},
+  {path:'myauditapp/home/saveaudit',component:SaveconfirmComponent,canActivate: [Authguard]},
   {path:'myauditapp/register',component:UserregistrationComponent},
   {path:'myauditapp/login',component:UserloginComponent},
-  {path:'myauditapp/home',component:AppshellComponent},
+  {path:'myauditapp/home',component:AppshellComponent,canActivate: [Authguard]},
   {path:'myauditapp/register/success',component:RegistersuccessComponent}
 ];
 
