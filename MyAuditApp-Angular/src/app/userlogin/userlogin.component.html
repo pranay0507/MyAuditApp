@@ -28,16 +28,16 @@
                 <div class="card-body">
                     <form (ngSubmit)="onSubmit()" #loginformForm="ngForm">
                         <div class="form-group">
-                            <label for="emailaddr">EmailAddress</label>
+                            <label for="emailaddr">Username<span class="asteric">*</span></label>
                             <input type="email" [(ngModel)]="loginform.emailaddr" class="form-control" id="emailaddr"
-                                name="emailaddr" placeholder="Enter the emailaddress" #emailaddr="ngModel" required
+                                name="emailaddr" placeholder="Enter the username" #emailaddr="ngModel" required
                                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                         </div>
                         <div class="alert alert-danger"
                             *ngIf="emailaddr.invalid && (emailaddr.dirty || emailaddr.touched)">Email is invalid</div>
-                        <div [hidden]="!emailaddr.pristine" class="alert alert-danger">EmailAddress is required</div>
+                        <div [hidden]="!emailaddr.pristine" *ngIf="emailaddr.dirty || emailaddr.touched" class="alert alert-danger">EmailAddress is required</div>
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">Password<span class="asteric">*</span></label>
                             <input type="password" [(ngModel)]="loginform.password" class="form-control" id="password"
                                 name="password" placeholder="Enter the password" #password="ngModel" required
                                 pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$">
@@ -45,7 +45,7 @@
                         <div class="alert alert-danger"
                             *ngIf="password.invalid && (password.dirty || password.touched)">Enter eight characters, at
                             least one letter, one number and one special character</div>
-                        <div [hidden]="!password.pristine" class="alert alert-danger">Password is required</div>
+                        <div [hidden]="!password.pristine" *ngIf="password.dirty || password.touched" class="alert alert-danger">Password is required</div>
 
                         <div class="row">
                             <div class="offset-sm-5 col-sm-2">

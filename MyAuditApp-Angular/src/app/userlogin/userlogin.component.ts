@@ -21,10 +21,10 @@ export class UserloginComponent {
     this.auditservice.loginUser(this.loginform).subscribe((resultData: any) => {
       console.log(resultData);
 
-      if (resultData.message == "Email not exits")
+      if (resultData.message == "Email not exists")
       {
     
-        alert("Email not exits");
+        alert("Email not exists");
   
 
       }
