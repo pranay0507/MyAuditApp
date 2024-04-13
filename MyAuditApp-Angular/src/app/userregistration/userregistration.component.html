@@ -1,31 +1,21 @@
-<div class="container">
+<nav class="navbar navbar-expand-lg static-top"> 
     <div class="row">
-        <div class=" col-sm-2">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-1">
-                        <img src="assets/auditicon.png" alt="Icon" class="icon">
-                    </div>
-                    <div class="col-sm-2">
-                        <h4>MyAuditApp</h4>
-                    </div>
-                </div>
-                
-            </div>
+        <div class="offset-sm-3 col-sm-1">
+            <img src="assets/images/auditicon.png" alt="Icon" class="icon">
         </div>
-        <div class="offset-sm-3 col-sm-2">
-            <div class="card-body">
-                <h2 class="card-title text-center py-3">Register</h2>
-            </div>
+        <div class=" title col-sm-2">
+            <h4>MyAuditApp</h4>
         </div>
     </div>
-</div>
-<div class="container">
+    <div class="title offset-sm-10 col-sm-1"><h6><a href="myauditapp/login">login</a></h6></div>
+  </nav>
+<div class="loginbox" [ngStyle]="{ backgroundImage: 'url(/assets/images/bgii.png)' }">
     <div class="row">
-        <div class="offset-sm-3 col-sm-6">
+        <div class="col-sm-3" id="login">
             <div class="card my-5" ng-app="userDetail" ng-controller="myCtrl">
                 <div class="card-body">
                     <form (ngSubmit)="onSubmit()" #userDetailsForm="ngForm">
+                        <h2 class="card-title text-center py-3">Register</h2>
                         <div class="form-group">
                             <label for="firstname">FirstName<span class="asteric">*</span></label>
                             <input type="text" [(ngModel)]="userDetails.firstname" class="form-control" id="firstname"
@@ -77,8 +67,8 @@
                         <div [hidden]="!repassword.pristine" *ngIf="repassword.dirty || repassword.touched" class="alert alert-danger">Re-enter the Password</div>
 
                         <div class="row">
-                            <div class="offset-sm-5 col-sm-2">
-                                <button type="submit" [disabled]="!userDetailsForm.form.valid"
+                            <div class="offset-sm-5 col-sm-2" id="loginButton">
+                                <button type="submit" [disabled]="!userDetailsForm.form.valid || userDetails.password!=userDetails.repassword"
                                     class="btn btn-info">Register</button>
                             </div>
                         </div>
@@ -88,4 +78,3 @@
         </div>
     </div>
 </div>
-<div class="offset-sm-5 col-sm-3">Already have an account? <a href="myauditapp/login">login-in</a></div>

@@ -35,7 +35,7 @@ export class UserloginComponent {
       }
       else
       {
-        alert("Incorrect Email and Password not match");
+        alert("Invalid Email or Password");
       }
     });
   }
